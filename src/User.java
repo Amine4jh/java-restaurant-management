@@ -2,11 +2,13 @@ public abstract class User {
     String name;
     int userId;
     String password;
+    String role;
 
-    User(String name, int userId, String password) {
+    User(String name, int userId, String password, String role) {
         this.name = name;
         this.userId = userId;
         this.password = password;
+        this.role = role;
     }
 
     abstract void showInfo (); // ABSTRACT METHOD

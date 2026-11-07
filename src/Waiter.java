@@ -1,7 +1,7 @@
 public class Waiter extends User {
 
-    Waiter(String name, int userID, String password) {
-        super(name, userID, password);
+    Waiter(String name, int userID, String password, String role) {
+        super(name, userID, password, role);
     }
 
     @Override
