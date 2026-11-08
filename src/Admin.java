@@ -31,8 +31,8 @@ public class Admin extends User{
                 return;
             }
 
-            for (User searchedUser : listOfUsers) {
-                if (searchedUser.getUserId() == user.getUserId()) {
+            for (User currentUser : listOfUsers) {
+                if (currentUser.getUserId() == user.getUserId()) {
                     System.out.println("User is already added previously!");
                     return;
                 }
@@ -70,6 +70,62 @@ public class Admin extends User{
                 System.out.print("Choose one of those roles (Admin, Waiter, Chef) : ");
                 user.setRole(sc.nextLine().trim());
                 System.out.println(user.getName() + " has modified successfully!");
+            } else {
+                System.out.println("Wrong action!");
+            }
+        } else {
+            System.out.println("Wrong action!");
+        }
+    }
+
+    void manageMenuItems (String action, Menu menuItem) {
+        if (action.equals("add")) {
+            List<Menu> listOfMenuItems = RestaurantData.menu;
+
+            for (Menu currentMenuItem : listOfMenuItems) {
+                if (currentMenuItem.itemId == menuItem.itemId) {
+                    System.out.println("Menu item is already exist!");
+                    return;
+                }
+            }
+
+            listOfMenuItems.add(menuItem);
+            System.out.println("Menu item has been added successfully!");
+        } else if (action.equals("delete")) {
+            List<Menu> listOfMenuItems = RestaurantData.menu;
+
+            if (listOfMenuItems != null) {
+                boolean removed = listOfMenuItems.remove(menuItem);
+                if (removed) {
+                    System.out.println("Menu item has been deleted successfully!");
+                } else {
+                    System.out.println("Menu item not found!");
+                }
+            }
+        } else if (action.equals("edit")) {
+            Scanner sc = new Scanner(System.in);
+            String[] newLineInputs = {"----------", "What to edit?", "1. Name", "2. Description", "3. Price", "4. Category", "----------"};
+            inputHandler(newLineInputs, "Choose a number (1,2, 3 or 4):");
+            int chosenOption = sc.nextInt();
+            sc.nextLine();
+
+            if (chosenOption == 1) {
+                System.out.print("Enter the new name: ");
+                menuItem.setName(sc.nextLine().trim());
+                System.out.println("Menu item name has modified successfully!");
+            } else if (chosenOption == 2) {
+                System.out.print("Enter the new description: ");
+                menuItem.setDescription(sc.nextLine().trim());
+                System.out.println("Menu item description has modified successfully!");
+            } else if (chosenOption == 3) {
+                System.out.print("Enter the new price: ");
+                menuItem.setPrice(sc.nextDouble());
+                sc.nextLine();
+                System.out.println("Menu item price has modified successfully!");
+            } else if (chosenOption == 4) {
+                System.out.print("Enter the new category: ");
+                menuItem.setCategory(sc.nextLine().trim());
+                System.out.println("Menu item category has modified successfully!");
             } else {
                 System.out.println("Wrong action!");
             }
