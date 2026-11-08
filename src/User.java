@@ -1,8 +1,8 @@
 public abstract class User {
-    String name;
-    int userId;
-    String password;
-    String role;
+    private String name;
+    private int userId;
+    private String password;
+    private String role;
 
     User(String name, int userId, String password, String role) {
         this.name = name;
@@ -10,6 +10,44 @@ public abstract class User {
         this.password = password;
         this.role = role;
     }
+
+    // --- SETTERS ---
+
+    void setName (String name) {
+        this.name = name;
+    }
+
+    void setUserId (int userId) {
+        this.userId = userId;
+    }
+
+    void setPassword (String password) {
+        this.password = password;
+    }
+
+    void setRole (String role) {
+        this.role = role;
+    }
+
+    // --- GETTERS ---
+
+    String getName () {
+        return this.name;
+    }
+
+    int getUserId () {
+        return this.userId;
+    }
+
+    String getPassword () {
+        return this.password;
+    }
+
+    String getRole () {
+        return this.role;
+    }
+
+    // --- Other class methods ---
 
     abstract void showInfo (); // ABSTRACT METHOD
 
