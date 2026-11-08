@@ -2,10 +2,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
-    int orderId;
-    Reservation reservation;
-    List<Menu> menuItems;
-    String status;
+    protected int orderId;
+    protected Reservation reservation;
+    protected List<Menu> menuItems;
+    protected String status;
 
     Order(int orderId, Reservation reservation, String status) {
         this.orderId = orderId;
@@ -13,6 +13,44 @@ public class Order {
         this.menuItems = new ArrayList<>();
         this.status = status;
     }
+
+    // --- SETTERS ---
+
+    void setOrderId (int orderId) {
+        this.orderId = orderId;
+    }
+
+    void setReservation (Reservation reservation) {
+        this.reservation = reservation;
+    }
+
+    void setMenuItems (List<Menu> menuItems) {
+        this.menuItems = menuItems;
+    }
+
+    void setStatus (String status) {
+        this.status = status;
+    }
+
+    // --- GETTERS ---
+
+    int getOrderId () {
+        return this.orderId;
+    }
+
+     Reservation getReservation () {
+        return this.reservation;
+    }
+
+    List<Menu> getMenuItems () {
+        return this.menuItems;
+    }
+
+     String getStatus () {
+        return this.status;
+    }
+
+    // Other class methods
 
     void addMenuItem (Menu menuItem) {
         menuItems.add(menuItem);
